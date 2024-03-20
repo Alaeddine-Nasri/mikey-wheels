@@ -1,0 +1,26 @@
+/* button.css */
+.iconDarkButton {
+  border-radius: 8px;
+  box-shadow: 7px 6px 0px #8453fa;
+  color: #f9d76c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #f9d76c 50%, #0f1128 25%, #000000 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+}
+
+.iconDarkButton:hover {
+  background-position: left bottom;
+  color: #8453fa;
+  /* box-shadow: 7px 6px 0px #8453fa; */
+}
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

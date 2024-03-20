@@ -1,0 +1,28 @@
+.card {
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(132, 83, 250, 0.5);
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #f9d76c 50%, #0f1128 25%, #fff 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+}
+.card:hover {
+  background-position: left bottom;
+  /* color: #8453fa; */
+  /* box-shadow: 7px 6px 0px #8453fa; */
+}
+
+.card-content {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+}
+.card-left-side {
+  display: flex;
+  flex-direction: column;
+}
+.card-right-side {
+}

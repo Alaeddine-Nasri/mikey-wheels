@@ -1,0 +1,24 @@
+/* button.css */
+.lightButton {
+  border-radius: 8px;
+  font-size: 1.6rem;
+  padding: 15px 45px 15px 45px;
+  box-shadow: 7px 6px 0px #f9d76c;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  color: #8453fa;
+  display: block;
+  width: 200px;
+  background: linear-gradient(to right, #8453fa 50%, #0f1128 25%, #000000 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+}
+
+.lightButton:hover {
+  background-position: left bottom;
+  color: #f9d76c;
+  /* box-shadow: 7px 6px 0px #8453fa; */
+}
