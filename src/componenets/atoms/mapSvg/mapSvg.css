@@ -1,0 +1,108 @@
+.svg-map {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* background-color: aqua; */
+  width: 100%;
+  height: 100%;
+}
+.svg-map-container {
+  /* Set background image to map.svg from assets folder */
+  background-image: url("/map.svg");
+  /* Adjust background size, repeat, position, etc. as needed */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* Add any other styles for the container */
+  width: 100%;
+  height: 100%;
+}
+.walls {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.left-wall {
+  height: 100%;
+  width: 4.2%;
+  /* background-color: red; */
+}
+.mid-wall {
+  height: 100%;
+  width: 91.8%;
+}
+.right-wall {
+  height: 100%;
+  width: 4.2%;
+  /* background-color: red; */
+}
+.top-walls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: aqua; */
+  width: 100%;
+  height: 27%;
+}
+
+.mid-walls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5.5%;
+  width: 100%;
+  height: 27%;
+}
+.bottom-walls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: red; */
+  margin-top: 6.5%;
+  width: 100%;
+  height: 26.5%;
+}
+.part1 {
+  /* background-color: red; */
+  width: 49%;
+  height: 100%;
+}
+.part2 {
+  /* background-color: red; */
+  width: 38%;
+  height: 100%;
+}
+.part3 {
+  /* background-color: red; */
+  width: 36.7%;
+  height: 100%;
+}
+.part4 {
+  /* background-color: red; */
+  width: 45.5%;
+  height: 100%;
+}
+.buttonback {
+  position: absolute;
+  top: 20px;
+  left: 5px;
+}
+.robot {
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn 1s ease forwards; /* Apply the fadeIn animation */
+  animation-delay: 1s; /* Delay the animation by 1 second */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start with opacity 0 */
+  }
+  to {
+    opacity: 1; /* Transition to opacity 1 */
+  }
+}

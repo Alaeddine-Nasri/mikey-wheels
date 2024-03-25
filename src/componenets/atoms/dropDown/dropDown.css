@@ -1,0 +1,22 @@
+/* components/DropDown.css */
+.dropdown {
+  box-shadow: 2px 4px 8px rgba(132, 83, 250, 0.5);
+  width: 100%;
+  margin: 5px 20px;
+  border-radius: 8px;
+  height: 70px;
+  padding: 0px 20px;
+  border: none !important;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: white; /* Adjust background color if needed */
+  color: #000;
+  appearance: none;
+}
+
+.dropdown:focus {
+  outline: none;
+}
+.dropdown option .icon {
+  fill: yellow; /* Set the color to yellow */
+}

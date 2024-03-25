@@ -1,0 +1,8 @@
+.mapContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 99vh;
+  /* padding-top: 3vh; */
+}

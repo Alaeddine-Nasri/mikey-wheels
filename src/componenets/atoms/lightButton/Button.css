@@ -5,12 +5,13 @@
   padding: 15px 45px 15px 45px;
   box-shadow: 7px 6px 0px #f9d76c;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 50px;
   line-height: 30px;
   text-align: center;
   color: #8453fa;
   display: block;
-  width: 200px;
+  width: 400px;
+  height: 150px;
   background: linear-gradient(to right, #8453fa 50%, #0f1128 25%, #000000 50%);
   background-size: 200% 100%;
   background-position: right bottom;

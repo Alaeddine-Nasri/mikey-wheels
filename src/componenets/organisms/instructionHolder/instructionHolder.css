@@ -1,0 +1,39 @@
+.instruction-holder {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: center;
+  height: 97vh;
+}
+.background-holder {
+  margin-left: 5%;
+  width: 90%;
+  height: 400px;
+  background-image: url("/robot.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+  opacity: 0.4;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: end;
+}
+.guiding-text {
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 55%;
+  text-align: justify;
+  margin: auto;
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: -100px;
+  opacity: 1 !important;
+  /* text-align: center; */
+}
+.vocal-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

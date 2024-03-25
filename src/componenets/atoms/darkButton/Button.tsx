@@ -1,4 +1,3 @@
-// Button.tsx
 import React from "react";
 import "./Button.css";
 
@@ -9,9 +8,9 @@ interface ButtonProps {
 
 const DarkButton: React.FC<ButtonProps> = ({ onClick, label }) => {
   return (
-    <div className="darkButton">
+    <button className="darkButton" onClick={onClick}>
       <div className="text">{label}</div>
-    </div>
+    </button>
   );
 };
 

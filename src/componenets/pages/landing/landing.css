@@ -1,0 +1,25 @@
+.landingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(to bottom, #0f1128, #000);
+}
+
+.circleContainer {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px; /* Adjust as needed */
+}
+
+.logo {
+  width: 300px; /* Adjust size of the logo as needed */
+  height: auto;
+}
