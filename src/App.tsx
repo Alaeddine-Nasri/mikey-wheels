@@ -12,7 +12,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         {/* <Route path="/map" element={<Map />} /> */}
-        <Route path="/map/:roomId" element={<Map />} />
+        <Route path="/map/:departId/:roomId" element={<Map id="1" />} />
       </Routes>
     </BrowserRouter>
   );

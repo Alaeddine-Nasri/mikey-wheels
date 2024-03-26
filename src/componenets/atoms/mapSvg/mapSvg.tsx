@@ -8,31 +8,15 @@ import axios from "axios";
 
 interface SVGMapProps {
   path: [number, number][]; // Define the type for path prop
+  depX: number | undefined;
+  depY: number | undefined;
 }
 
-const SVGMap: React.FC<SVGMapProps> = ({ path }) => {
+const SVGMap: React.FC<SVGMapProps> = ({ path, depX, depY }) => {
   const [robotPosition, setRobotPosition] = useState({ x: 0, y: 0 });
   const [animationCompleted, setAnimationCompleted] = useState(false);
 
   useEffect(() => {
-    const fetchPath = async () => {
-      try {
-        const response = await axios.post(
-          "https://pathfinder-production.up.railway.app/find_path",
-          {
-            initial_position: { x: 0, y: 5 },
-            destination_position: { x: 16, y: 8 },
-          }
-        );
-        console.log("API response:", response.data);
-      } catch (error) {
-        console.error("Error fetching path:", error);
-      }
-    };
-
-    // Call the fetchPath function when component mounts
-    // fetchPath();
-
     let currentIndex = 0;
 
     const intervalId = setInterval(() => {
@@ -70,13 +54,20 @@ const SVGMap: React.FC<SVGMapProps> = ({ path }) => {
             size="50px"
           />
         </div>
-        <svg viewBox="31 -8 100 100" width="100%" height="100%">
+        {/* viewBox="31 -8 100 100" */}
+        <svg
+          viewBox={`${depX !== undefined ? -depX * 5.3 + 31 : 31} ${
+            depY !== undefined ? depY - 13 : -8
+          } 100 100`}
+          width="100%"
+          height="100%"
+        >
           {/* Render the path */}
           <path d={getPathString(path)} stroke="#8453fa" fill="none" />
           {/* Render the robot image */}
           <image
             className="robot"
-            href="/robot.png" // Path to the image file
+            href="/robot.png" // Path ato the image file
             x={robotPosition.x - 2.5} // Adjust x position to center the image
             y={robotPosition.y - 3} // Adjust y position to center the image
             width="5" // Set the width of the image

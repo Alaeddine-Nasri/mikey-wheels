@@ -1,3 +1,4 @@
+// RoomsList.tsx
 import React, { useState } from "react";
 import rooms from "../../../types/data";
 import { Item } from "../../../types/types";
@@ -14,6 +15,9 @@ const RoomsList: React.FC = () => {
   const [filteredRooms, setFilteredRooms] = useState<Item[]>(rooms);
   const [showScanner, setShowScanner] = useState<boolean>(false);
   const [data, setData] = useState("No result");
+  const [selectedDeparture, setSelectedDeparture] = useState<
+    number | undefined
+  >(undefined); // Add selectedDeparture state
   const navigate = useNavigate();
 
   const handleSearch = (searchTerm: string) => {
@@ -25,7 +29,11 @@ const RoomsList: React.FC = () => {
 
   const handleClick = (roomId: number) => {
     console.log("Clicked room ID:", roomId);
-    navigate(`/map/${roomId}`);
+    if (selectedDeparture !== undefined) {
+      navigate(`/map/${selectedDeparture}/${roomId}`); // Navigate with both departureId and roomId
+    } else {
+      console.error("No departure selected");
+    }
   };
 
   const handleClick2 = () => {
@@ -35,6 +43,11 @@ const RoomsList: React.FC = () => {
   const handleRoomSelect = (roomId: number) => {
     console.log("Selected room ID:", roomId);
     // Handle room selection logic here
+  };
+
+  const handleDepartureSelect = (departureId: number) => {
+    console.log("Selected departure ID:", departureId);
+    setSelectedDeparture(departureId);
   };
 
   return (
@@ -59,7 +72,10 @@ const RoomsList: React.FC = () => {
           height="70px"
           size="50px"
         />
-        <DropDown onSelect={handleRoomSelect} />
+        <DropDown
+          onSelect={handleRoomSelect}
+          onSelectDeparture={handleDepartureSelect}
+        />
         <IconDarkButton
           onClick={() => setShowScanner(true)} // Show QR code scanner when clicked
           icon={QrCode}
