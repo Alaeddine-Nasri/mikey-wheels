@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import rooms from "../../../types/data";
 import { Item } from "../../../types/types";
 import { ChevronLeft, QrCode } from "lucide-react";
@@ -8,7 +8,7 @@ import IconDarkButton from "../../atoms/iconDarkButton/Button";
 import { useNavigate } from "react-router-dom";
 import "./cardList.css";
 import DropDown from "../../atoms/dropDown/dropDown";
-import { QrReader } from "react-qr-reader";
+//import { QrReader } from "react-qr-reader";
 
 const RoomsList: React.FC = () => {
   const [filteredRooms, setFilteredRooms] = useState<Item[]>(rooms);
@@ -30,6 +30,10 @@ const RoomsList: React.FC = () => {
 
   const handleClick2 = () => {
     navigate(`/`);
+  };
+
+  const handleClick3 = () => {
+    navigate(`/qrCodeScreen`);
   };
 
   const handleRoomSelect = (roomId: number) => {
@@ -61,7 +65,7 @@ const RoomsList: React.FC = () => {
         />
         <DropDown onSelect={handleRoomSelect} />
         <IconDarkButton
-          onClick={() => setShowScanner(true)} // Show QR code scanner when clicked
+          onClick={() => handleClick3} // Show QR code scanner when clicked
           icon={QrCode}
           width="70px"
           height="70px"
