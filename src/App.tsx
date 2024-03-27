@@ -16,8 +16,8 @@ const App: React.FC = () => {
         {/* <Route path="/map" element={<Map />} /> */}
 
         <Route path="/map/:departId/:roomId" element={<Map id="1" />} />
-        {/* <Route path="/qrCodeScreen" element={<QRScannerComponent />} />
-        <Route path="/qrPositionList" element={<QrCodeListScreen />} /> */}
+        {/* <Route path="/qrCodeScreen" element={<QRScannerComponent />} /> */}
+        <Route path="/qrPositionList" element={<QrCodeListScreen />} />
       </Routes>
     </BrowserRouter>
   );

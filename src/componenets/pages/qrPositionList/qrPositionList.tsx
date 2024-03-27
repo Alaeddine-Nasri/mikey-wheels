@@ -11,8 +11,9 @@ interface QRCodeData {
 const QrCodeListScreen: React.FC = () => {
   const qrCodes: QRCodeData[] = [
     { title: "Salle 1", x: "100", y: "200" },
-    { title: "Salle 2", x: "300", y: "400" },
-    { title: "Salle 3", x: "500", y: "600" },
+    { title: "Salle 4", x: "300", y: "400" },
+    { title: "Salle 6", x: "500", y: "600" },
+    { title: "Direction", x: "500", y: "600" },
     // Add more QR codes as needed
   ];
 

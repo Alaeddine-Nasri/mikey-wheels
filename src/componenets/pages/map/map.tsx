@@ -30,7 +30,7 @@ const Map: React.FC<MapProps> = ({ id }) => {
           const response = await axios.post(
             "https://pathfinder-production.up.railway.app/find_path",
             {
-              initial_position: { x: DepX, y: DepY },
+              initial_position: { x: 0, y: 5 },
               destination_position: { x: locX, y: locY }, // Using locX and locY here
             }
           );
@@ -68,18 +68,33 @@ const Map: React.FC<MapProps> = ({ id }) => {
   }, [parsedRoomId]);
 
   let pathToUse: [number, number][] = [];
-  if (
-    parsedRoomId === 1 ||
-    parsedRoomId === 2 ||
-    parsedRoomId === 3 ||
-    parsedRoomId === 4
-  ) {
-    pathToUse = apiPath.map(([x, y]) => [x * 5.35, y * 4.7]);
-  }
+
+  // pathToUse = apiPath.map(([x, y]) => [x * 5.35, y * 4.7]);
+  pathToUse = apiPath.map(([x, y]) => {
+    let scaleX = 5.35;
+    let scaleY = 4.7;
+
+    if (x < 5) {
+      scaleX = 6.3;
+    } else if (x < 13) {
+      scaleX = 5.5;
+    } else if (x < 20) {
+      scaleX = 5.4;
+    }
+
+    if (y < 10) {
+      scaleY = 4;
+    } else if (y > 10) {
+      scaleY = 4.9;
+    }
+
+    return [x * scaleX, y * scaleY];
+  });
 
   return (
     <div className="mapContainer">
-      <SVGMap path={pathToUse} depX={DepX} depY={DepY} />
+      {/* <p>path {apiPath}</p> */}
+      <SVGMap path={pathToUse} depX={0} depY={0} />
       {/* {DepX !== undefined && DepY !== undefined && (
         <p>
           Location X: {DepX}, Location Y: {DepY}

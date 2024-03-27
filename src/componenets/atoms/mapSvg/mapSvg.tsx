@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 interface SVGMapProps {
-  path: [number, number][]; // Define the type for path prop
+  path: [number, number][];
   depX: number | undefined;
   depY: number | undefined;
 }
@@ -55,10 +55,12 @@ const SVGMap: React.FC<SVGMapProps> = ({ path, depX, depY }) => {
           />
         </div>
         {/* viewBox="31 -8 100 100" */}
+
         <svg
-          viewBox={`${depX !== undefined ? -depX * 5.3 + 31 : 31} ${
-            depY !== undefined ? depY - 13 : -8
-          } 100 100`}
+          viewBox="31 -8 100 100"
+          // viewBox={`${depX !== undefined ? -depX * 5.3 + 31 : 31} ${
+          //   depY !== undefined ? depY - 13 : -8
+          // } 100 100`}
           width="100%"
           height="100%"
         >
@@ -67,11 +69,11 @@ const SVGMap: React.FC<SVGMapProps> = ({ path, depX, depY }) => {
           {/* Render the robot image */}
           <image
             className="robot"
-            href="/robot.png" // Path ato the image file
-            x={robotPosition.x - 2.5} // Adjust x position to center the image
-            y={robotPosition.y - 3} // Adjust y position to center the image
-            width="5" // Set the width of the image
-            height="5" // Set the height of the image
+            href="/robot.png"
+            x={robotPosition.x - 2.5}
+            y={robotPosition.y - 3}
+            width="5"
+            height="5"
           />
         </svg>
       </div>
