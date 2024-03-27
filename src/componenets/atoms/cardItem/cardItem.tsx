@@ -19,13 +19,13 @@ const CardItem: React.FC<Props> = ({ item, onClick }) => {
     <div className="card" onClick={onClick}>
       <div className="card-content">
         <div className="card-left-side">
-          <h3>{item.name}</h3>
-          <p>Type: {item.type}</p>
+          <p className="title">{item.name}</p>
         </div>
         <div className="card-right-side">
-          <p>
+          {/* <p>
             Location: ({item.locationX}, {item.locationY})
-          </p>
+          </p> */}
+          <p className="text">Type: {item.type}</p>
         </div>
       </div>
     </div>

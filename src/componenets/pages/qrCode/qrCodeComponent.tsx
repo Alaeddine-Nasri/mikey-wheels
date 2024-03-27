@@ -1,30 +1,39 @@
-import React, { useEffect, useRef, useState } from 'react';
-import QrScanner from 'qr-scanner'; // Assuming qr-scanner is installed via npm or yarn
+import React, { useEffect, useRef, useState } from "react";
+import QrScanner from "qr-scanner"; // Assuming qr-scanner is installed via npm or yarn
 //import 'qr-scanner/dist/qr-scanner.min.js'; // Importing the JavaScript file
-import './qrCode.css';
+import "./qrCode.css";
 
-const QRScannerComponent: React.FC = () => {
+interface QRScannerProps {
+  setQrResult: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const QRScannerComponent: React.FC<QRScannerProps> = ({ setQrResult }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [camHasCamera, setCamHasCamera] = useState<boolean>(false);
-  const [camQrResult, setCamQrResult] = useState<string>('None');
-  const [camQrError, setCamQrError] = useState<string>('None');
-  const [camQrResultTimestamp, setCamQrResultTimestamp] = useState<string>('');
+  const [camQrResult, setCamQrResult] = useState<string>("None");
+  const [camQrError, setCamQrError] = useState<string>("None");
+  const [camQrResultTimestamp, setCamQrResultTimestamp] = useState<string>("");
 
   useEffect(() => {
-    const scanner = new QrScanner(videoRef.current!, result => {
+    const scanner = new QrScanner(
+      videoRef.current!,
+      (result) => {
         //TODO navigate
-      setCamQrResult(result.data); // Extracting data property
-      setCamQrResultTimestamp(new Date().toString());
-    }, {
-      onDecodeError: error => {
-        setCamQrError(error.toString());
+        setQrResult(result.data);
+        setCamQrResult(result.data); // Extracting data property
+        setCamQrResultTimestamp(new Date().toString());
       },
-      highlightScanRegion: true,
-      highlightCodeOutline: true,
-    });
+      {
+        onDecodeError: (error) => {
+          setCamQrError(error.toString());
+        },
+        highlightScanRegion: true,
+        highlightCodeOutline: true,
+      }
+    );
 
     scanner.start().then(() => {
-      QrScanner.hasCamera().then(hasCamera => setCamHasCamera(hasCamera));
+      QrScanner.hasCamera().then((hasCamera) => setCamHasCamera(hasCamera));
     });
 
     return () => {
@@ -32,20 +41,6 @@ const QRScannerComponent: React.FC = () => {
     };
   }, []);
 
-  /*
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      QrScanner.scanImage(file).then(result => {
-        setCamQrResult(result.data); // Extracting data property
-        setCamQrResultTimestamp(new Date().toString());
-      }).catch(error => {
-        setCamQrResult(error?.toString() || 'No QR code found.');
-      });
-    }
-  };*/
-
-  //TODO Add close button redirect previous page
   return (
     <div>
       <h1>Scan from WebCam:</h1>
@@ -54,7 +49,7 @@ const QRScannerComponent: React.FC = () => {
       </div>
       <div>
         <b>Device has camera:</b>
-        <span id="cam-has-camera">{camHasCamera ? 'Yes' : 'No'}</span>
+        <span id="cam-has-camera">{camHasCamera ? "Yes" : "No"}</span>
       </div>
       <br />
       <b>Detected QR code: </b>

@@ -3,7 +3,7 @@ import { Item } from "./types";
 const rooms: Item[] = [
   {
     id: 1,
-    name: "Salle 4",
+    name: "Salle 1",
     type: "Classe",
     locationX: 28,
     locationY: 4,
@@ -11,6 +11,46 @@ const rooms: Item[] = [
   },
   {
     id: 2,
+    name: "Toillet 1",
+    type: "Rest room",
+    locationX: 28,
+    locationY: 4,
+    superficie: 100,
+  },
+  {
+    id: 3,
+    name: "Salle 2",
+    type: "Classe",
+    locationX: 28,
+    locationY: 4,
+    superficie: 100,
+  },
+  {
+    id: 4,
+    name: "Salle 3",
+    type: "Classe",
+    locationX: 28,
+    locationY: 4,
+    superficie: 100,
+  },
+  {
+    id: 5,
+    name: "Salle 4",
+    type: "Classe",
+    locationX: 28,
+    locationY: 4,
+    superficie: 100,
+  },
+  {
+    id: 6,
+    name: "Salle 5",
+    type: "Classe",
+    locationX: 28,
+    locationY: 4,
+    superficie: 100,
+  },
+  {
+    id: 7,
     name: "Direction",
     type: "Class",
     locationX: 10,
@@ -18,7 +58,7 @@ const rooms: Item[] = [
     superficie: 100,
   },
   {
-    id: 3,
+    id: 8,
     name: "Salle Conférence",
     type: "Class",
     locationX: 17,
@@ -26,7 +66,7 @@ const rooms: Item[] = [
     superficie: 150,
   },
   {
-    id: 4,
+    id: 9,
     name: "Toillet 2",
     type: "Class",
     locationX: 2,

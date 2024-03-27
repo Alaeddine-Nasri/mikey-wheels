@@ -3,7 +3,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 98vh;
+  margin: 0;
   /* padding-top: 3vh; */
 }
 

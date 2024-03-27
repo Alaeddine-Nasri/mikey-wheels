@@ -1,16 +1,34 @@
 /* components/DropDown.css */
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("../../../fonts/Poppins-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("../../../fonts/Poppins-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url("../../../fonts/Poppins-Medium.ttf") format("truetype");
+}
+
+.dropdown-container {
+  width: 100%;
+  margin: 0;
+}
 .dropdown {
   box-shadow: 2px 4px 8px rgba(132, 83, 250, 0.5);
   width: 100%;
-  margin: 5px 20px;
   border-radius: 8px;
+  margin-right: 20px;
   height: 70px;
   padding: 0px 20px;
   border: none !important;
   font-size: 20px;
   font-weight: bold;
+  font-family: "Poppins-Bold", sans-serif;
   background-color: white; /* Adjust background color if needed */
-  color: #000;
+  color: #666d7b;
   appearance: none;
 }
 

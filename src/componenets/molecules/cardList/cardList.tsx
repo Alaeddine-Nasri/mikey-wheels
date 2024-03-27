@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import rooms from "../../../types/data";
 import { Item } from "../../../types/types";
 import { ChevronLeft, QrCode } from "lucide-react";
@@ -8,7 +8,8 @@ import IconDarkButton from "../../atoms/iconDarkButton/Button";
 import { useNavigate } from "react-router-dom";
 import "./cardList.css";
 import DropDown from "../../atoms/dropDown/dropDown";
-//import { QrReader } from "react-qr-reader";
+import QRScannerComponent from "../../pages/qrCode/qrCodeComponent";
+import Modal from "../../atoms/modal/modal";
 
 const RoomsList: React.FC = () => {
   const [filteredRooms, setFilteredRooms] = useState<Item[]>(rooms);
@@ -16,8 +17,18 @@ const RoomsList: React.FC = () => {
   const [data, setData] = useState("No result");
   const [selectedDeparture, setSelectedDeparture] = useState<
     number | undefined
-  >(undefined); // Add selectedDeparture state
+  >(undefined);
+  const [qrResult, setQrResult] = useState<string>("None");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (qrResult !== "None") {
+      const departureId = parseInt(qrResult[13]);
+      if (!isNaN(departureId)) {
+        handleDepartureSelect(departureId);
+      }
+    }
+  }, [qrResult]);
 
   const handleSearch = (searchTerm: string) => {
     const filtered = rooms.filter((room) =>
@@ -29,7 +40,7 @@ const RoomsList: React.FC = () => {
   const handleClick = (roomId: number) => {
     console.log("Clicked room ID:", roomId);
     if (selectedDeparture !== undefined) {
-      navigate(`/map/${selectedDeparture}/${roomId}`); // Navigate with both departureId and roomId
+      navigate(`/map/${selectedDeparture}/${roomId}`);
     } else {
       console.error("No departure selected");
     }
@@ -40,12 +51,11 @@ const RoomsList: React.FC = () => {
   };
 
   const handleClick3 = () => {
-    navigate(`/qrCodeScreen`);
+    setShowScanner(true);
   };
 
   const handleRoomSelect = (roomId: number) => {
     console.log("Selected room ID:", roomId);
-    // Handle room selection logic here
   };
 
   const handleDepartureSelect = (departureId: number) => {
@@ -54,48 +64,53 @@ const RoomsList: React.FC = () => {
   };
 
   return (
-    <div className="al">
-      {/* <QrReader
-        onResult={(result, error) => {
-          if (!!result) {
-            setData(result?.text);
-          }
-
-          if (!!error) {
-            console.info(error);
-          }
-        }}
-        style={{ width: "100%" }}
-      /> */}
-      <div className="al" style={{ display: "flex", alignItems: "center" }}>
+    <div className="CardslistContainer">
+      <div className="al">
         <IconDarkButton
           onClick={handleClick2}
           icon={ChevronLeft}
-          width="70px"
-          height="70px"
-          size="50px"
+          width="60px"
+          height="60px"
+          size="40px"
         />
+        <div className="btncntr">
+          <p className="title">List of rooms</p>
+          <p className="text">Please select a departure point.</p>
+        </div>
+      </div>
+      <div className="al">
         <DropDown
           onSelect={handleRoomSelect}
           onSelectDeparture={handleDepartureSelect}
         />
-        <IconDarkButton
-          onClick={() => handleClick3} // Show QR code scanner when clicked
-          icon={QrCode}
-          width="70px"
-          height="70px"
-          size="30px"
-        />
+        <div className="btncntr">
+          <IconDarkButton
+            onClick={handleClick3}
+            icon={QrCode}
+            width="60px"
+            height="60px"
+            size="30px"
+          />
+        </div>
       </div>
+      {qrResult !== "None" && (
+        <p className="smalltext">
+          You are at : <b>{qrResult.slice(6, 14)}</b>
+        </p>
+      )}
       <SearchBar onSearch={handleSearch} />
-
-      {filteredRooms.map((room) => (
-        <CardItem
-          key={room.id}
-          item={room}
-          onClick={() => handleClick(room.id)}
-        />
-      ))}
+      <div className="scrollable">
+        {filteredRooms.map((room) => (
+          <CardItem
+            key={room.id}
+            item={room}
+            onClick={() => handleClick(room.id)}
+          />
+        ))}
+      </div>
+      <Modal show={showScanner} onClose={() => setShowScanner(false)}>
+        <QRScannerComponent setQrResult={setQrResult} />
+      </Modal>
     </div>
   );
 };
