@@ -5,14 +5,16 @@ import DarkButton from "../darkButton/Button";
 
 interface PopupProps {
   onClose: () => void;
+  message: string; // New prop for the message
+  message2: string;
 }
 
-const Popup: React.FC<PopupProps> = ({ onClose }) => {
+const Popup: React.FC<PopupProps> = ({ onClose, message, message2 }) => {
   return (
     <div className="modal-background">
       <div className="modal-content">
-        <h2>Congratulations!</h2>
-        <p>You have arrived at your destination.</p>
+        <h2>{message}</h2>
+        <p>{message2}</p>
         <DarkButton onClick={onClose} label={"Close"}></DarkButton>
       </div>
     </div>

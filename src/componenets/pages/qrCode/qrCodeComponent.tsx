@@ -42,7 +42,7 @@ const QRScannerComponent: React.FC<QRScannerProps> = ({ setQrResult }) => {
   }, []);
 
   return (
-    <div>
+    <div className="fullcontainer">
       <h1>Scan from WebCam:</h1>
       <div id="video-container">
         <video id="qr-video" ref={videoRef}></video>

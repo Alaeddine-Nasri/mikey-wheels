@@ -78,7 +78,13 @@ const SVGMap: React.FC<SVGMapProps> = ({ path, depX, depY }) => {
         </svg>
       </div>
       {/* Render the pop-up modal when animation is completed */}
-      {animationCompleted && <Popup onClose={handleCloseModal} />}
+      {animationCompleted && (
+        <Popup
+          onClose={handleCloseModal}
+          message={"Félicitations"}
+          message2={"Vous avez atteint votre destination"}
+        />
+      )}
     </div>
   );
 };

@@ -10,6 +10,7 @@ import "./cardList.css";
 import DropDown from "../../atoms/dropDown/dropDown";
 import QRScannerComponent from "../../pages/qrCode/qrCodeComponent";
 import Modal from "../../atoms/modal/modal";
+import Popup from "../../atoms/popUp/popUp";
 
 const RoomsList: React.FC = () => {
   const [filteredRooms, setFilteredRooms] = useState<Item[]>(rooms);
@@ -20,12 +21,14 @@ const RoomsList: React.FC = () => {
   >(undefined);
   const [qrResult, setQrResult] = useState<string>("None");
   const navigate = useNavigate();
+  const [animationCompleted, setAnimationCompleted] = useState(false);
 
   useEffect(() => {
     if (qrResult !== "None") {
       const departureId = parseInt(qrResult[13]);
       if (!isNaN(departureId)) {
         handleDepartureSelect(departureId);
+        setShowScanner(false);
       }
     }
   }, [qrResult]);
@@ -43,7 +46,11 @@ const RoomsList: React.FC = () => {
       navigate(`/map/${selectedDeparture}/${roomId}`);
     } else {
       console.error("No departure selected");
+      setAnimationCompleted(true);
     }
+  };
+  const handleCloseModal = () => {
+    setAnimationCompleted(false);
   };
 
   const handleClick2 = () => {
@@ -74,8 +81,8 @@ const RoomsList: React.FC = () => {
           size="40px"
         />
         <div className="btncntr">
-          <p className="title">List of rooms</p>
-          <p className="text">Please select a departure point.</p>
+          <p className="title">List des destinations</p>
+          <p className="text">Selectioner un point de depart.</p>
         </div>
       </div>
       <div className="al">
@@ -93,9 +100,12 @@ const RoomsList: React.FC = () => {
           />
         </div>
       </div>
+      {qrResult == "None" && (
+        <p className="smalltext">Scanner le code QR pour ce positioner</p>
+      )}
       {qrResult !== "None" && (
         <p className="smalltext">
-          You are at : <b>{qrResult.slice(6, 14)}</b>
+          Ta position est : <b>{qrResult.slice(0, 14)}</b>
         </p>
       )}
       <SearchBar onSearch={handleSearch} />
@@ -111,6 +121,14 @@ const RoomsList: React.FC = () => {
       <Modal show={showScanner} onClose={() => setShowScanner(false)}>
         <QRScannerComponent setQrResult={setQrResult} />
       </Modal>
+
+      {animationCompleted && (
+        <Popup
+          onClose={handleCloseModal}
+          message={"Oops !"}
+          message2={"Selection un point de départ avant la destination"}
+        />
+      )}
     </div>
   );
 };

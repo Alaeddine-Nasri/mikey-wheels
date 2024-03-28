@@ -1,4 +1,17 @@
 /* button.css */
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("../../../fonts/Poppins-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("../../../fonts/Poppins-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url("../../../fonts/Poppins-Medium.ttf") format("truetype");
+}
+
 .darkButton {
   border-radius: 8px;
   font-size: 1.6rem;
@@ -22,3 +35,10 @@
   color: #8453fa;
   /* box-shadow: 7px 6px 0px #8453fa; */
 }
+
+/* .title {
+  font-size: 23px;
+  margin: 0;
+  font-family: "Poppins-Bold", sans-serif;
+  color: #f9d76c;
+} */

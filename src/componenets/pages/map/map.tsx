@@ -30,7 +30,7 @@ const Map: React.FC<MapProps> = ({ id }) => {
           const response = await axios.post(
             "https://pathfinder-production.up.railway.app/find_path",
             {
-              initial_position: { x: 0, y: 5 },
+              initial_position: { x: DepX, y: DepY },
               destination_position: { x: locX, y: locY }, // Using locX and locY here
             }
           );
